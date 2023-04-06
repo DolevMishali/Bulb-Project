@@ -9,7 +9,6 @@
             "type": "python",
             "request": "launch",
             "program": "${file}",
-            "args": ["--ip","10.0.0.8","-r","255","-g","255","-b","255"],
             "console": "integratedTerminal",
             "justMyCode": true
         }
