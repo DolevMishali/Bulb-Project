@@ -10,10 +10,12 @@ Bulb_engine = BulbEngine()
 
 @app.route('/', methods=['GET'])
 def get_welcome():
+    
     return jsonify({'message': 'Welcome to my app'})
 
 @app.route('/set_bulb', methods =['POST'])
 def set_bulb():
+    
     with open(db_path, mode='a',newline='') as file:
         position = file.tell()
         if position == 0:
