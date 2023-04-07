@@ -3,14 +3,28 @@ from yeelight import discover_bulbs
 from yeelight import Bulb
 import time
 
-class BulbEngine:
+class BulbEngine: 
+    
+    def get_capabilities(self):
+        if self.bulb is not None:
+            capability = {}
+            properties = self.bulb.get_capabilities()()
+            for capability in capabilities:
+                capability[capability] = capabilities[capability]
+            return capa
+        else:
+            return None     
+    
     def __init__(self):
         self.db = DatabaseWrapper("bulb.csv")
-        self.bulb = None
-        bulb = self.db.get_bulb()
-        if bulb is not None:
-            self.bulb = Bulb(bulb.ip)
+        self.bulb_data = self.db.get_bulb()
+        if self.bulb_data is not None:
+            self.bulb = Bulb(self.bulb_data["ip"])
             self.bulb_data = self.bulb.get_capabilities()
+        else:
+            self.bulb = None
+            self.bulb_data = None
+
 
     def discover(self):
         self.bulb_data = discover_bulbs()[0]
@@ -50,16 +64,6 @@ class BulbEngine:
             blue = int(hex_code[4:6], 16)
             rgb = (red, green, blue)
             self.set_rgb(rgb)
-
-    def get_capabilities(self):
-        if self.bulb is not None:
-            capability = {}
-            properties = self.bulb.get_capabilities()()
-            for capability in capabilities:
-                capability[capability] = capabilities[capability]
-            return capa
-        else:
-            return None 
          
     def set_timer(self, minutes, seconds):
         if self.bulb is not None:
