@@ -3,6 +3,7 @@ from bulbEngine import BulbEngine
 import uuid
 import csv
 import os
+# $env:FLASK_APP="bulbAPI.py"
 
 app = Flask(__name__)
 db_path = os.path.join(app.root_path, 'bulb.csv')
@@ -28,6 +29,16 @@ def set_bulb():
         
     return jsonify({'message': 'You have already set up your bulb!'})
 
-# @app.route('/turn_on', methods = ['GET'])
-# def turn_on():
+@app.route('/power/turn_on', methods = ['GET'])
+def turn_on():
+    bulb_ip = request.args.get('bulb_ip')
+    bulb = Bulb(bulb_ip)
+    bulb.turn_on()
+    return jsonify({'message': 'The bulb turned on!'})
     
+@app.route('/power/turn_off', methods = ['GET'])
+def turn_off():
+    bulb_ip = request.args.get('bulb_ip')
+    bulb = Bulb(bulb_ip)
+    bulb.turn_on()
+    return jsonify({'message': 'The bulb turned off!'})

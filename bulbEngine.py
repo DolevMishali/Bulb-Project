@@ -62,8 +62,7 @@ class BulbEngine:
             red = int(hex_code[0:2], 16)
             green = int(hex_code[2:4], 16)
             blue = int(hex_code[4:6], 16)
-            rgb = (red, green, blue)
-            self.set_rgb(rgb)
+            self.bulb.set_rgb(red, green, blue)
          
     def set_timer(self, minutes, seconds):
         if self.bulb is not None:
