@@ -19,22 +19,27 @@ class BulbEngine:
         self.db = DatabaseWrapper("bulb.csv")
         self.bulb_data = self.db.get_bulb()
         if self.bulb_data is not None:
-            self.bulb = Bulb(self.bulb_data["ip"])
-            self.bulb_data = self.bulb.get_capabilities()
+            self.update_bulb(self.bulb_data["ip"])
         else:
             self.bulb = None
             self.bulb_data = None
-
+            self.discover()
 
     def discover(self):
         self.bulb_data = discover_bulbs()[0]
-        self.bulb = Bulb(self.bulb_data["ip"])
-        self.db.set_bulb(self.bulb_data["ip"], self.bulb_data["name"])
+        self.db.set_bulb(self.bulb_data["ip"], self.bulb_data["capabilities"]["name"])
 
     def set_bulb(self, ip, name):
-        if self.bulb is not None:
-            self.bulb.set_name(name)
-            self.bulb._ip = ip
+        self.db.set_bulb(ip, name)
+        self.update_bulb(ip)
+        
+    def get_bulb(self):
+        return self.db.get_bulb()
+    
+    def update_bulb(self, ip):
+        self.bulb = Bulb(ip)
+        self.bulb_data = self.bulb.get_capabilities()
+    
 
     def turn_on(self):
         if self.bulb is not None:
@@ -57,7 +62,7 @@ class BulbEngine:
                         # Remove the '#' symbol from the hex code string, if present
             if hex_code[0] == '#':
                 hex_code = hex_code[1:]
-
+            self.bulb.turn_on()
             # Convert the hex code string to RGB values
             red = int(hex_code[0:2], 16)
             green = int(hex_code[2:4], 16)
@@ -70,4 +75,4 @@ class BulbEngine:
             total_seconds = (minutes*60) + seconds
             time.sleep(total_seconds)
             self.turn_off()
-    
+            

@@ -11,7 +11,10 @@ class DatabaseWrapper:
         with open(self.filename, mode='r') as file:
             reader = csv.DictReader(file)
             for row in reader:
-                return {'ip': row['ip'], 'name': row['name']}
+                res = {}
+                res["ip"] = row['ip']
+                res["name"] = row['name']
+                return res
             return None
     
     def set_bulb(self, ip, name):
@@ -20,6 +23,7 @@ class DatabaseWrapper:
             writer = csv.DictWriter(file, fieldnames=fieldnames)
             writer.writeheader()
             writer.writerow({'ip': ip, 'name': name})
+            return 'Bulb setup successfully done!'
 
     def delete_bulb():
         self.bulb.set_color_temp(temperature)
