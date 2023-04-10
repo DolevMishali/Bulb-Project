@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from bulbEngine import BulbEngine
+from flask_cors import CORS
 from databaseWrapper import DatabaseWrapper
 import uuid
 import csv
@@ -7,6 +8,7 @@ import os
 # $env:FLASK_APP="bulbAPI.py"
 
 app = Flask(__name__)
+CORS(app)
 db_path = os.path.join(app.root_path, 'bulb.csv')
 Bulb_engine = BulbEngine()
 os.environ['FLASK_APP'] = 'bulbAPI.py'
@@ -47,4 +49,19 @@ def set_rgb_values():
     blue = request.json['blue']
     if (red and green and blue) is not None:
         Bulb_engine.set_rgb_by_values(red, green, blue)
+    return jsonify({'message': 'The bulb turned on in the selected color!'})
+
+@app.route('/set_brightness', methods =['POST'])
+def set_brightness_by_value():
+    brightness = request.json['value']
+    if brightness is not None:
+        Bulb_engine.set_brightness(brightness)
+    return jsonify({'message': 'The bulb turned on in the selected color!'})
+
+@app.route('/set_timer', methods =['POST'])
+def set_timer_by_sec_min():
+    sec = request.json['sec']
+    min = request.json['min']
+    if ( sec and min ) is not None:
+        Bulb_engine.set_brightness(brightness)
     return jsonify({'message': 'The bulb turned on in the selected color!'})
