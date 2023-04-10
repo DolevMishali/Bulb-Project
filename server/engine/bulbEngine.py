@@ -1,4 +1,4 @@
-from databaseWrapper import DatabaseWrapper
+from server.database.databaseWrapper import DatabaseWrapper
 from yeelight import discover_bulbs
 from yeelight import Bulb
 import time

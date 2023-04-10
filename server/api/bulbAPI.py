@@ -1,7 +1,6 @@
 from flask import Flask, request, jsonify
-from bulbEngine import BulbEngine
+from server.engine.bulbEngine import BulbEngine
 from flask_cors import CORS
-from databaseWrapper import DatabaseWrapper
 import uuid
 import csv
 import os
@@ -63,5 +62,12 @@ def set_timer_by_sec_min():
     sec = request.json['sec']
     min = request.json['min']
     if ( sec and min ) is not None:
-        Bulb_engine.set_brightness(brightness)
-    return jsonify({'message': 'The bulb turned on in the selected color!'})
+        Bulb_engine.set_timer(minutes, seconds)
+    return jsonify({'message': 'The bulb turned on with timer: ' + min + 'minutes and ' + sec + 'seconds.'})
+
+@app.route('/set_temperature_by_kelvin', methods =['POST'])
+def set_temperature():
+    temperature = request.json['temperature']
+    if temperature is not None:
+        Bulb_engine.set_color_temp(temperature)
+    return jsonify({'message': 'The bulb on ' + temperature + 'kelvin'})
