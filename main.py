@@ -10,3 +10,4 @@ eng = BulbEngine()
 # eng.set_brightness(100) # 0-100
 # eng.set_color_temp(6500) # 1700-6500
 # eng.set_timer(0, 10)
+# eng.set_rgb_by_val(255,255,255)

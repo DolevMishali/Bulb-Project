@@ -16,20 +16,6 @@ def get_bulb():
     bulb = Bulb_engine.get_bulb()
     return jsonify(bulb)
 
-@app.route('/set_bulb', methods =['POST'])
-def set_bulb():
-    ip = request.json['ip']
-    name = request.json['name']
-    Bulb_engine.set_bulb(ip, name)
-    return jsonify({'message': 'You have already set up your bulb!'})
-
-@app.route('/set_rgb_hex', methods =['POST'])
-def set_color():
-    hex_code = request.json.get('color')
-    if hex_code:
-        Bulb_engine.set_rgb_hex(hex_code)
-    return jsonify({'message': 'The bulb turned on in the selected color!'})
-
 @app.route('/power/turn_on', methods=['GET'])
 def turn_on():
     Bulb_engine.bulb.turn_on()
@@ -39,3 +25,26 @@ def turn_on():
 def turn_off():
     Bulb_engine.bulb.turn_off()
     return jsonify({'message': 'The bulb turned off!'})
+
+@app.route('/set_bulb', methods =['POST'])
+def set_bulb():
+    ip = request.json['ip']
+    name = request.json['name']
+    Bulb_engine.set_bulb(ip, name)
+    return jsonify({'message': 'You have already set up your bulb!'})
+
+@app.route('/set_color_by_hex', methods =['POST'])
+def set_color_by_hex():
+    hex_code = request.json.get('color')
+    if hex_code:
+        Bulb_engine.set_rgb_hex(hex_code)
+    return jsonify({'message': 'The bulb turned on in the selected color!'})
+
+@app.route('/set_rgb_by_values', methods =['POST'])
+def set_rgb_values():
+    red = request.json['red']
+    green = request.json['green']
+    blue = request.json['blue']
+    if (red and green and blue) is not None:
+        Bulb_engine.set_rgb_by_values(red, green, blue)
+    return jsonify({'message': 'The bulb turned on in the selected color!'})

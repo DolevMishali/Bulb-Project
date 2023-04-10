@@ -40,7 +40,6 @@ class BulbEngine:
         self.bulb = Bulb(ip)
         self.bulb_data = self.bulb.get_capabilities()
     
-
     def turn_on(self):
         if self.bulb is not None:
             self.bulb.turn_on()
@@ -75,4 +74,9 @@ class BulbEngine:
             total_seconds = (minutes*60) + seconds
             time.sleep(total_seconds)
             self.turn_off()
-            
+    
+    def set_rgb_by_values(self, red, green, blue):
+        if self.bulb is not None:
+            self.turn_on()
+            if ( red in range(0, 256) ) and ( green in range(0, 256) ) and ( blue in range(0, 256) ):
+                self.bulb.set_rgb(red, green, blue)
