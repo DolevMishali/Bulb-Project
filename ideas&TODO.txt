@@ -1,18 +1,38 @@
-# Ideas:
+        - - - I D E A S : - - -
 
-Alarm clock: 
-You can use the Yeelight bulb as an alarm clock by gradually increasing the brightness and changing the color over a set period of time.
-This can make waking up in the morning a more pleasant experience.
+* Alarm clock: 
+    You can use the Yeelight bulb as an alarm clock by gradually increasing the brightness and changing the color over a set period of time.
+    This can make waking up in the morning a more pleasant experience.
 
-Weather notification:
-You can use a weather API to get the current weather conditions and use the Yeelight bulb to display the weather through different colors or patterns.
+* Weather notification:
+    You can use a weather API to get the current weather conditions and use the Yeelight bulb to display the weather through different colors or patterns.
 
-Motion detection:
-You can use a motion sensor to trigger the Yeelight bulb to turn on or change color when someone enters the room.
-This can create a cool and interactive lighting experience.
+* Sunrise/sunset simulation:
+    You can use the Yeelight bulb to simulate a sunrise or sunset by gradually changing the color and brightness over a set period of time.
+    This can create a relaxing and soothing ambiance in your home.
 
-Sunrise/sunset simulation:
-You can use the Yeelight bulb to simulate a sunrise or sunset by gradually changing the color and brightness over a set period of time.
-This can create a relaxing and soothing ambiance in your home.
+* Screen brightness:
+    Get the brightness and the temperature of your screen computer and set the same values to the bulb.
+    Using pyautogui.screenshot()
 
-# TODO LIST:
+* Voice control:
+    You can add voice control to your Yeelight bulb project using a voice recognition library like SpeechRecognition or Google Cloud Speech-to-Text.
+    With voice control, you can turn the bulb on and off, change the color and brightness, and more.
+
+* Music synchronization:
+    You can use a music recognition library like Spotipy to synchronize the color and brightness of the Yeelight bulb with the beat of the music.
+    This can create a fun and immersive experience when listening to music.
+    Maybe add claps to turn on/off the bulb.
+
+* Screen color:
+    Project that detects the color of your computer screen and adjusts the color of the Yeelight bulb to match.
+    Using ImageGrab.grab()
+
+* Motion detection:
+    You can use a motion sensor to trigger the Yeelight bulb to turn on or change color when someone enters the room.
+    This can create a cool and interactive lighting experience.
+
+     - - - T O D O   L I S T : - - -
+
+* Add validations to opening files in databaseWrapper
+* Add function that get red green blue values
