@@ -1,0 +1,18 @@
+# Ideas:
+
+Alarm clock: 
+You can use the Yeelight bulb as an alarm clock by gradually increasing the brightness and changing the color over a set period of time.
+This can make waking up in the morning a more pleasant experience.
+
+Weather notification:
+You can use a weather API to get the current weather conditions and use the Yeelight bulb to display the weather through different colors or patterns.
+
+Motion detection:
+You can use a motion sensor to trigger the Yeelight bulb to turn on or change color when someone enters the room.
+This can create a cool and interactive lighting experience.
+
+Sunrise/sunset simulation:
+You can use the Yeelight bulb to simulate a sunrise or sunset by gradually changing the color and brightness over a set period of time.
+This can create a relaxing and soothing ambiance in your home.
+
+# TODO LIST:

@@ -9,6 +9,7 @@ import os
 app = Flask(__name__)
 db_path = os.path.join(app.root_path, 'bulb.csv')
 Bulb_engine = BulbEngine()
+os.environ['FLASK_APP'] = 'bulbAPI.py'
 
 @app.route('/get_bulb', methods=['GET'])
 def get_bulb():
