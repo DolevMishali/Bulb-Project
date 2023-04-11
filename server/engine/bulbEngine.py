@@ -4,16 +4,16 @@ from yeelight import Bulb
 import time
 
 class BulbEngine: 
-    
     def get_capabilities(self):
         if self.bulb is not None:
-            capability = {}
-            properties = self.bulb.get_capabilities()()
-            for capability in capabilities:
-                capability[capability] = capabilities[capability]
-            return capa
-        else:
-            return None     
+            properties = self.bulb.get_capabilities()
+            if properties is not None:
+                return properties
+            else:
+                return None
+                
+            
+        return None     
     
     def __init__(self):
         self.db = DatabaseWrapper("bulb.csv")
@@ -26,12 +26,17 @@ class BulbEngine:
             self.discover()
 
     def discover(self):
-        self.bulb_data = discover_bulbs()[0]
-        self.db.set_bulb(self.bulb_data["ip"], self.bulb_data["capabilities"]["name"])
+        bulbs = discover_bulbs()
+        if bulbs.__len__() > 0:
+            self.bulb_data = bulbs[0]
+            self.db.set_bulb(self.bulb_data["ip"], self.bulb_data["capabilities"]["name"])
+        else:
+            print("Discover zero bulbs")
 
     def set_bulb(self, ip, name):
         self.db.set_bulb(ip, name)
         self.update_bulb(ip)
+        self.bulb.set_name(name)
         
     def get_bulb(self):
         return self.db.get_bulb()
