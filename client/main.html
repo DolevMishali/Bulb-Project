@@ -1,20 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" type="text/css" href="main.css" /> 
     <meta charset="utf-8">
     <title>My Bulb Control Panel</title>
   </head>
-  <body>
+  <body onload="init()">
     <h1>Control Your Bulb</h1>
-    <button onclick="setRgbValues(250, 0, 0)">Turn Red</button>
+    <!-- <button onclick="setRgbValues(250, 0, 0)">Turn Red</button>
     <button onclick="setRgbValues(0, 250, 0)">Turn Green</button>
     <button onclick="setRgbValues(0, 0, 250)">Turn Blue</button>
     <button onclick="turnPower(true)">Turn on</button>
-    <button onclick="turnPower(false)">Turn off</button>
+    <button onclick="turnPower(false)">Turn off</button> -->
     <br>
+    <h3>Bulb Power</h3>
+    <label class="switch">
+      <input id="bulbpower" type="checkbox" onchange="powerchanged(event)">
+      <span class="toggleSlider round"></span>
+    </label>
     <br>
-    <h3>Color Changer</h3>
-    <input type="color" oninput="setHexColor(event.target.value)">
+    <h3>Color Color</h3>
+    <input id="colorpicker" type="color" oninput="setHexColor(event.target.value)">
+    <br>
+    <h3>Bulb Brightness</h3>
+    <div>
+      <input type="range" oninput="brightnessChanged(event)" min="1" max="100" value="50" id="brightness">
+    </div>
     <script src="client.js"></script>
   </body>
 </html>
