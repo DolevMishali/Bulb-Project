@@ -7,25 +7,54 @@
   </head>
   <body onload="init()">
     <h1>Control Your Bulb</h1>
+    <br>
     <!-- <button onclick="setRgbValues(250, 0, 0)">Turn Red</button>
     <button onclick="setRgbValues(0, 250, 0)">Turn Green</button>
     <button onclick="setRgbValues(0, 0, 250)">Turn Blue</button>
     <button onclick="turnPower(true)">Turn on</button>
     <button onclick="turnPower(false)">Turn off</button> -->
+    <h3>Bulb Details</h3>
+    <p>Device Name:  <label id="devicename"></label></p>
+    <p>Device Model:  <label id="model"></label></p>
+    <p>Device Firmware Version:  <label id="devicefwver"></label></p>
     <br>
+
     <h3>Bulb Power</h3>
     <label class="switch">
       <input id="bulbpower" type="checkbox" onchange="powerchanged(event)">
       <span class="toggleSlider round"></span>
     </label>
     <br>
-    <h3>Color Color</h3>
+
+    <h3>Color</h3>
     <input id="colorpicker" type="color" oninput="setHexColor(event.target.value)">
     <br>
+
     <h3>Bulb Brightness</h3>
     <div>
-      <input type="range" oninput="brightnessChanged(event)" min="1" max="100" value="50" id="brightness">
+      <input type="range" oninput="brightnessChanged(event)" min="1" max="100" id="brightness">
     </div>
+
+    <h3>Bulb Timer</h3>
+    <form>
+      <label for="hours">Hours:</label>
+      <input type="number" id="hours" name="hours" min="0" max="23">
+      
+      <label for="minutes">Minutes:</label>
+      <input type="number" id="minutes" name="minutes" min="0" max="59">
+      
+      <label for="seconds">Seconds:</label>
+      <input type="number" id="seconds" name="seconds" min="0" max="59">
+      <br>
+      <br>
+      <button type="button" onclick="Timer()">Start Timer!</button>
+    </form>
+    
+    <h3>Bulb Discover</h3>
+    <div>
+      <button onclick="discover()">Discover</button>
+    </div>
+
     <script src="client.js"></script>
   </body>
 </html>
