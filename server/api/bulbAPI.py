@@ -17,6 +17,11 @@ def get_bulb():
     bulb = Bulb_engine.get_bulb()
     return jsonify(bulb)
 
+@app.route(bulb_route + '/discover', methods=['GET'])
+def discover():
+    res = Bulb_engine.discover()
+    return jsonify({'message': res})
+
 @app.route(bulb_route + '/props', methods=['GET'])
 def get_capabilities():
     bulb = Bulb_engine.get_capabilities()
@@ -63,11 +68,12 @@ def set_brightness_by_value():
 
 @app.route(bulb_route + '/timer', methods =['POST'])
 def set_timer_by_sec_min():
-    sec = request.json['sec']
-    min = request.json['min']
-    if ( sec and min ) is not None:
-        Bulb_engine.set_timer(minutes, seconds)
-    return jsonify({'message': 'The bulb turned on with timer: ' + min + 'minutes and ' + sec + 'seconds.'})
+    hours = request.json['hours']
+    minutes = request.json['minutes']
+    seconds = request.json['seconds']
+    if ( seconds and minutes and hours ) is not None:
+        Bulb_engine.set_timer(hours, minutes, seconds)
+    return jsonify({'message': 'The bulb turned on with timer: '+ hours + 'hours and ' + minutes + 'minutes and ' + seconds + 'seconds.'})
 
 @app.route(bulb_route + '/temperature', methods =['POST'])
 def set_temperature():
