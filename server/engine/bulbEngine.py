@@ -30,8 +30,9 @@ class BulbEngine:
         if bulbs.__len__() > 0:
             self.bulb_data = bulbs[0]
             self.db.set_bulb(self.bulb_data["ip"], self.bulb_data["capabilities"]["name"])
+            return 'Bulb Discovered on IP ' + self.bulb_data["ip"]
         else:
-            print("Discover zero bulbs")
+            return "Discover zero bulbs"
 
     def set_bulb(self, ip, name):
         self.db.set_bulb(ip, name)
@@ -73,10 +74,10 @@ class BulbEngine:
             blue = int(hex_code[4:6], 16)
             self.bulb.set_rgb(red, green, blue)
          
-    def set_timer(self, minutes, seconds):
+    def set_timer(self, hours, minutes, seconds):
         if self.bulb is not None:
             self.turn_on()
-            total_seconds = (minutes*60) + seconds
+            total_seconds = (hours*3600) + (minutes*60) + seconds
             time.sleep(total_seconds)
             self.turn_off()
     
