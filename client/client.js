@@ -6,7 +6,6 @@ let intervalId;
 let uichanging = false;
 let uichangingtimerId;
 
-
 function init() {
   intervalId = setInterval(async () => {
     if(uichanging)
@@ -29,11 +28,21 @@ function init() {
     setColorPicker(json);
     setPower(json);
     setBrightness(json);
+    setDeviceDetails(json);
+    setTimer(json);
 
   }, 500);
 }
 
 //Update the UI
+function setDeviceDetails(json) {
+  const devicename = document.getElementById("devicename");
+  devicename.innerHTML = json.name;
+  const devicefwver = document.getElementById("devicefwver");
+  devicefwver.innerHTML = json.fw_ver;
+  const model = document.getElementById("model");
+  model.innerHTML = json.model;
+}
 
 function setBrightness(json) {
   const brightness = document.getElementById("brightness");
@@ -61,10 +70,14 @@ function setColorPicker(json) {
   colorpicker.value = "#" + hexStr;
 }
 
+function Timer(json){
+  var sec = document.getElementById("seconds");
+  var min = document.getElementById("minutes");
+  var hr = document.getElementById("hours");
+  setTimer(hr,min,sec);
+}
 
 //Requests from server
-
-
 function brightnessChanged(event) {
   event.preventDefault();
   UIChanged()
@@ -87,6 +100,17 @@ function brightnessChanged(event) {
   //Dont change the UI !!
   //event.target.value = !event.target.checked
   }
+}
+
+async function discover() {
+  const response = await fetch(`${apiUrl}${apiBulbRoute}/discover`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+  const json = await response.json()
+  alert(json.message)
 }
 
 function powerchanged(event) {
@@ -152,6 +176,20 @@ async function setHexColor(color) {
       timerId = null;
     }, 50)
   }
+}
+
+async function setTimer(hours, minutes, seconds) {
+  const response = await fetch(`${apiUrl}${apiBulbRoute}/timer`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      hours: hours,
+      minutes: minutes,
+      seconds: seconds
+    })
+  }); 
 }
 
 //Misc
