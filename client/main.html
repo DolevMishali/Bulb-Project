@@ -36,19 +36,10 @@
     </div>
 
     <h3>Bulb Timer</h3>
-    <form>
-      <label for="hours">Hours:</label>
-      <input type="number" id="hours" name="hours" min="0" max="23">
-      
-      <label for="minutes">Minutes:</label>
-      <input type="number" id="minutes" name="minutes" min="0" max="59">
-      
-      <label for="seconds">Seconds:</label>
-      <input type="number" id="seconds" name="seconds" min="0" max="59">
+      <input id="bulbtimer" type="time" value="00:00:02" >
       <br>
       <br>
-      <button type="button" onclick="Timer()">Start Timer!</button>
-    </form>
+      <button type="button" onclick="setTimer()">Start Timer!</button>
     
     <h3>Bulb Discover</h3>
     <div>

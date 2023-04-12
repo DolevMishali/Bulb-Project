@@ -29,7 +29,6 @@ function init() {
     setPower(json);
     setBrightness(json);
     setDeviceDetails(json);
-    setTimer(json);
 
   }, 500);
 }
@@ -68,13 +67,6 @@ function setColorPicker(json) {
   }
 
   colorpicker.value = "#" + hexStr;
-}
-
-function Timer(json){
-  var sec = document.getElementById("seconds");
-  var min = document.getElementById("minutes");
-  var hr = document.getElementById("hours");
-  setTimer(hr,min,sec);
 }
 
 //Requests from server
@@ -178,16 +170,18 @@ async function setHexColor(color) {
   }
 }
 
-async function setTimer(hours, minutes, seconds) {
-  const response = await fetch(`${apiUrl}${apiBulbRoute}/timer`, {
+async function setTimer() {
+  var timer = document.getElementById("bulbtimer");
+  const clock = timer.value.split(":")
+  await fetch(`${apiUrl}${apiBulbRoute}/timer`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      hours: hours,
-      minutes: minutes,
-      seconds: seconds
+      hours: clock[0],
+      minutes: clock[1],
+      seconds: clock[2]
     })
   }); 
 }

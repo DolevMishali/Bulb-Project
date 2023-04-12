@@ -68,12 +68,12 @@ def set_brightness_by_value():
 
 @app.route(bulb_route + '/timer', methods =['POST'])
 def set_timer_by_sec_min():
-    hours = request.json['hours']
-    minutes = request.json['minutes']
-    seconds = request.json['seconds']
-    if ( seconds and minutes and hours ) is not None:
-        Bulb_engine.set_timer(hours, minutes, seconds)
-    return jsonify({'message': 'The bulb turned on with timer: '+ hours + 'hours and ' + minutes + 'minutes and ' + seconds + 'seconds.'})
+    hr = request.json['hours']
+    min = request.json['minutes']
+    sec = request.json['seconds']
+    if ( sec and min and hr ) is not None:
+        Bulb_engine.set_timer(int(hr), int(min), int(sec))
+    return jsonify({'message': 'The bulb turned on with timer: '+ hr + 'hours and ' + min + 'minutes and ' + sec + 'seconds.'})
 
 @app.route(bulb_route + '/temperature', methods =['POST'])
 def set_temperature():
