@@ -10,26 +10,32 @@ function init() {
   intervalId = setInterval(async () => {
     if(uichanging)
       return
+    const bulbContainer = document.getElementById("bulbcontainer");
 
     const response = await fetch(`${apiUrl}${apiBulbRoute}/props`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
       }
+    }).then(res => res).catch(err => {
+      bulbContainer.classList.remove(...bulbContainer.classList);
+      bulbContainer.classList.add("hide")
     });
   
     const json = await response.json();
+    
 
     if(!json) {
       //clearInterval(intervalId)
+      bulbContainer.classList.remove(...bulbContainer.classList);
+      bulbContainer.classList.add("hide")
       return
     }
-      
+    
     setColorPicker(json);
     setPower(json);
     setBrightness(json);
     setDeviceDetails(json);
-
   }, 500);
 }
 

@@ -6,13 +6,9 @@
     <title>My Bulb Control Panel</title>
   </head>
   <body onload="init()">
+<div id="bulbcontainer">
     <h1>Control Your Bulb</h1>
     <br>
-    <!-- <button onclick="setRgbValues(250, 0, 0)">Turn Red</button>
-    <button onclick="setRgbValues(0, 250, 0)">Turn Green</button>
-    <button onclick="setRgbValues(0, 0, 250)">Turn Blue</button>
-    <button onclick="turnPower(true)">Turn on</button>
-    <button onclick="turnPower(false)">Turn off</button> -->
     <h3>Bulb Details</h3>
     <p>Device Name:  <label id="devicename"></label></p>
     <p>Device Model:  <label id="model"></label></p>
@@ -40,7 +36,7 @@
       <br>
       <br>
       <button type="button" onclick="setTimer()">Start Timer!</button>
-    
+</div>
     <h3>Bulb Discover</h3>
     <div>
       <button onclick="discover()">Discover</button>
