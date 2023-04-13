@@ -81,3 +81,10 @@ def set_temperature():
     if temperature is not None:
         Bulb_engine.set_color_temp(temperature)
     return jsonify({'message': 'The bulb on ' + temperature + 'kelvin'})
+
+@app.route(bulb_route + '/sync_bulb_brightness_as_screen', methods =['POST'])
+def sync_brightness():
+    sync_status = request.json['status']
+    if sync_status:
+        Bulb_engine.sync_screen_brightness()
+    return jsonify({'message': 'The bulb has been successfully synchronized'})

@@ -1,5 +1,8 @@
 from server.database.databaseWrapper import DatabaseWrapper
 from yeelight import discover_bulbs
+
+import screen_brightness_control as sbc
+
 from yeelight import Bulb
 import time
 
@@ -11,8 +14,6 @@ class BulbEngine:
                 return properties
             else:
                 return None
-                
-            
         return None     
     
     def __init__(self):
@@ -86,3 +87,10 @@ class BulbEngine:
             self.turn_on()
             if ( red in range(0, 256) ) and ( green in range(0, 256) ) and ( blue in range(0, 256) ):
                 self.bulb.set_rgb(red, green, blue)
+
+    def sync_screen_brightness(self):
+        while True:
+            # get current brightness value
+            current_brightness = sbc.get_brightness()
+            self.bulb.set_brightness(current_brightness[0])
+            time.sleep(0.5) # wait for half a second before checking again
