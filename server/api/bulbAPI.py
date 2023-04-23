@@ -29,7 +29,7 @@ def get_capabilities():
 
 @app.route(bulb_route + '/weather_color', methods =['GET'])
 def weather():
-    Bulb_engine.weather_color()
+    Bulb_engine.weather_description()
     return jsonify({'message': 'The bulb on weather mode'})
 
 @app.route(bulb_route + '/power', methods=['POST'])
