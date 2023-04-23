@@ -1,10 +1,11 @@
 from server.database.databaseWrapper import DatabaseWrapper
 from yeelight import discover_bulbs
+from yeelight import Bulb
+from datetime import datetime
 
 import screen_brightness_control as sbc
-
-from yeelight import Bulb
 import time
+import requests
 
 class BulbEngine: 
     def get_capabilities(self):
@@ -65,7 +66,7 @@ class BulbEngine:
  
     def set_rgb_hex(self, hex_code):
         if self.bulb is not None:
-                        # Remove the '#' symbol from the hex code string, if present
+            # Remove the '#' symbol from the hex code string, if present
             if hex_code[0] == '#':
                 hex_code = hex_code[1:]
             self.bulb.turn_on()
@@ -75,12 +76,16 @@ class BulbEngine:
             blue = int(hex_code[4:6], 16)
             self.bulb.set_rgb(red, green, blue)
          
-    def set_timer(self, hours, minutes, seconds):
+    def set_timer(self, hours, minutes, seconds,mode):
         if self.bulb is not None:
-            self.turn_on()
-            total_seconds = (hours*3600) + (minutes*60) + seconds
-            time.sleep(total_seconds)
-            self.turn_off()
+            if mode in ('on', 'On', 'ON'):
+                total_seconds = (hours*3600) + (minutes*60) + seconds
+                time.sleep(total_seconds)
+                self.turn_on()
+            else:
+                total_seconds = (hours*3600) + (minutes*60) + seconds
+                time.sleep(total_seconds)
+                self.turn_off()
     
     def set_rgb_by_values(self, red, green, blue):
         if self.bulb is not None:
@@ -94,3 +99,37 @@ class BulbEngine:
             current_brightness = sbc.get_brightness()
             self.bulb.set_brightness(current_brightness[0])
             time.sleep(0.5) # wait for half a second before checking again
+    
+    # def set_alarm(self, time):
+    #         # Convert the time string to a datetime object
+    #         alarm_time = datetime.strptime(time, "%H:%M:%S")
+
+    #         # Get the current time
+    #         now = datetime.now()
+
+    #         # Calculate the number of seconds until the alarm time
+    #         seconds_until_alarm = (alarm_time - now).total_seconds()
+
+    #         # If the alarm time is in the past, add 24 hours to it
+    #         if seconds_until_alarm < 0:
+    #             seconds_until_alarm += 24 * 60 * 60
+    #         self.bulb.turn_on()
+    
+    
+    def weather_color(self):
+        # Replace YOUR_API_KEY with your OpenWeatherMap API key
+        API_KEY = 'f536fd35b2a85f1643723345b58b8208'
+        # Replace CITY_NAME and COUNTRY_CODE with the name and ISO 3166 country code of the location you want to get the weather for
+        url = f'http://api.openweathermap.org/data/2.5/weather?q=Pardes Hana-Karkur,IL&appid={API_KEY}&units=metric'
+
+        # Send a GET request to the API and get the JSON response
+        response = requests.get(url)
+        data = response.json()
+
+        # Extract the relevant weather information from the JSON response
+        temperature = data['main']['temp']
+        description = data['weather'][0]['description']
+
+        # Print the weather information
+        print(f'Temperature: {temperature} °C')
+        print(f'Description: {description}')

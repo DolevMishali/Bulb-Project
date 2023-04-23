@@ -27,6 +27,11 @@ def get_capabilities():
     bulb = Bulb_engine.get_capabilities()
     return jsonify(bulb)
 
+@app.route(bulb_route + '/weather_color', methods =['GET'])
+def weather():
+    Bulb_engine.weather_color()
+    return jsonify({'message': 'The bulb on weather mode'})
+
 @app.route(bulb_route + '/power', methods=['POST'])
 def power():
     status = request.json['status']
@@ -71,8 +76,9 @@ def set_timer_by_sec_min():
     hr = request.json['hours']
     min = request.json['minutes']
     sec = request.json['seconds']
+    mode = request.json['mode']
     if ( sec and min and hr ) is not None:
-        Bulb_engine.set_timer(int(hr), int(min), int(sec))
+        Bulb_engine.set_timer(int(hr), int(min), int(sec),mode)
     return jsonify({'message': 'The bulb turned on with timer: '+ hr + 'hours and ' + min + 'minutes and ' + sec + 'seconds.'})
 
 @app.route(bulb_route + '/temperature', methods =['POST'])
@@ -88,3 +94,9 @@ def sync_brightness():
     if sync_status:
         Bulb_engine.sync_screen_brightness()
     return jsonify({'message': 'The bulb has been successfully synchronized'})
+
+@app.route(bulb_route + '/alarm', methods =['POST'])
+def alarm():
+    alarm_time = request.json['time']
+    Bulb_engine.set_alarm(alarm_time)
+    return jsonify({'message': 'The bulb on alarm mode'})
