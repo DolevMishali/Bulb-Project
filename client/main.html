@@ -1,47 +1,59 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel="stylesheet" type="text/css" href="main.css" /> 
-    <meta charset="utf-8">
-    <title>My Bulb Control Panel</title>
-  </head>
-  <body onload="init()">
-<div id="bulbcontainer">
+
+<head>
+  <link rel="stylesheet" type="text/css" href="main.css" />
+  <meta charset="utf-8">
+  <title>My Bulb Control Panel</title>
+</head>
+
+<body onload="init()">
+  <div id="bulbcontainer">
     <h1>Control Your Bulb</h1>
     <br>
+    <div class="borderedDiv"></div>
     <h3>Bulb Details</h3>
-    <p>Device Name:  <label id="devicename"></label></p>
-    <p>Device Model:  <label id="model"></label></p>
-    <p>Device Firmware Version:  <label id="devicefwver"></label></p>
+    <p>Device Name: <label id="devicename"></label></p>
+    <p>Device Model: <label id="model"></label></p>
+    <p>Device Firmware Version: <label id="devicefwver"></label></p>
     <br>
-
+  </div>
+  <div class="borderedDiv">
     <h3>Bulb Power</h3>
     <label class="switch">
       <input id="bulbpower" type="checkbox" onchange="powerchanged(event)">
       <span class="toggleSlider round"></span>
     </label>
-    <br>
-
+  </div>
+  <br>
+  <div class="borderedDiv">
     <h3>Color</h3>
     <input id="colorpicker" type="color" oninput="setHexColor(event.target.value)">
-    <br>
-
+  </div>
+  <br>
+  <div class="borderedDiv">
     <h3>Bulb Brightness</h3>
-    <div>
-      <input type="range" oninput="brightnessChanged(event)" min="1" max="100" id="brightness">
-    </div>
-
+    <input type="range" oninput="brightnessChanged(event)" min="1" max="100" id="brightness">
+  </div>
+  <div class="borderedDiv">
     <h3>Bulb Timer</h3>
-      <input id="bulbtimer" type="time" value="00:00:02" >
-      <br>
-      <br>
-      <button type="button" onclick="setTimer()">Start Timer!</button>
-</div>
-    <h3>Bulb Discover</h3>
-    <div>
-      <button onclick="discover()">Discover</button>
-    </div>
+    <input id="bulbtimer" type="time" value="00:00:02">
+    <br>
+    <br>
+    <button type="button" onclick="setTimer()">Start Timer!</button>
+    <br>
+  </div>
+  <div class="borderedDiv">
+    <h3>Play Weather Mode</h3>
+    <button type="button" onclick="">Start</button>
+  </div>
+  </div>
+  <h3>Bulb Discover</h3>
+  <div>
+    <button onclick="discover()">Discover</button>
+  </div>
 
-    <script src="client.js"></script>
-  </body>
+  <script src="client.js"></script>
+</body>
+
 </html>

@@ -66,3 +66,15 @@ input:checked + .toggleSlider:before {
 .hide{
 	display: none;
 }
+
+.borderedDiv {
+	border: 1px solid black;
+	border-radius: 15px;
+	margin-top: 50px;
+	padding-bottom: 20px;
+	padding-left: 20px;
+	margin-right: 700px;
+  }
+
+#bulbcontainer{
+}
