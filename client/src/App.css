@@ -2,7 +2,17 @@ body {
   background-color: #d4d4d4 !important;
 }
 
-.cols {
+.colsheader {
   width: 30% !important;
+  border: 1px solid black !important;
+  margin: 10px;
+  margin-bottom: 50px;
+  margin-top: 20px !important;
+}
+
+.rowlist {
   border: 1px solid black;
+  border-radius: 3px;
+  margin-right: 80%;
+  text-align: center;
 }
