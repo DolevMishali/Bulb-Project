@@ -1,0 +1,13 @@
+.navbarStyle {
+  letter-spacing: 1em;
+  font-size: 150%;
+  background: linear-gradient(
+    90deg,
+    rgba(58, 139, 180, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center !important; /* why this is dont work???? */
+  margin-left: 200px;
+}
