@@ -12,11 +12,16 @@ function OverLayDetails() {
   return (
     <>
       {/* Button component from react-bootstrap with a ref pointing to the target reference variable and an onClick event to toggle the visibility state of the overlay */}
-      <Button variant="danger" ref={target} onClick={() => setShow(!show)}>
+      <Button
+        variant='danger'
+        ref={target}
+        onClick={() => setShow(!show)}
+        className='myOverLay'
+      >
         Bulb Details
       </Button>
       {/* Overlay component from react-bootstrap with target set to the current value of the target reference variable, show set to the current value of the show state variable, and placement set to 'right' */}
-      <Overlay target={target.current} show={show} placement="right">
+      <Overlay target={target.current} show={show} placement='right'>
         {/* Rendering the content of the overlay using a render prop that provides access to various properties such as placement, arrowProps, and popper */}
         {({
           placement: _placement, // Unused placement property
@@ -27,7 +32,7 @@ function OverLayDetails() {
           ...props // Remaining properties passed as props to the rendered content
         }) => (
           // Div element that renders the content of the overlay, with the className set to 'my-overlay' and style set to the combined value of props.style and inline CSS styles
-          <div {...props} className="my-overlay" style={{ ...props.style }}>
+          <div {...props} className='afterClick' style={{ ...props.style }}>
             <ul>
               <li>Bulb Name</li>
               <li>Bulb </li>
