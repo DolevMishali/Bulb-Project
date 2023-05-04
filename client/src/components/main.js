@@ -1,25 +1,32 @@
 import DetailsOverLay from './DetailsOverLay';
 import SwitchOnOff from './SwitchButtonOnOff';
-import FigureTemplate from './Figure';
+import ButtonCard from './Cards';
 import { Row, Col, Container } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+
 function Main() {
   return (
     <>
       <Container>
         <Row>
-          <h1 className='cols'>2354234</h1>
-          <h1 className='cols'>2354234</h1>
-          <h1 className='cols'>2354234</h1>
-          <Col style={{ padding: '0' }}>
-            <h1 style={{ border: '1px solid black' }}>2354234</h1>
-            <h1 style={{ border: '1px solid black' }}>2354234</h1>
-            <h1 style={{ border: '1px solid black' }}>2354234</h1>
+          <Button variant='primary' className='colsheader'>
+            Weather Mode
+          </Button>{' '}
+          <Button variant='primary' className='colsheader'>
+            Bulb Timer
+          </Button>{' '}
+          <Button variant='primary' className='colsheader'>
+            Primary
+          </Button>{' '}
+          <SwitchOnOff />
+          <Col>
+            <ButtonCard.ColorPickerCard />
+            <ButtonCard.BulbBrightnessCard />
           </Col>
         </Row>
       </Container>
-
       {/* <DetailsOverLay />
-      <SwitchOnOff /> */}
+       */}
     </>
   );
 }
