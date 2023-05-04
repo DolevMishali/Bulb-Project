@@ -1,8 +1,8 @@
 import BrightnessSlider from './BrightnessSlider';
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import React from 'react';
 import ColorPicker from './ColorPicker';
+import ColorTempratureSlider from './ColorTempratureSlider';
+import React from 'react';
 import './Cards.css';
 
 export const ColorPickerCard = () => {
@@ -60,4 +60,26 @@ export const BulbTimerCard = () => {
   );
 };
 
-export default { ColorPickerCard, BulbBrightnessCard, BulbTimerCard };
+export const TemperatureColorCard = () => {
+  const handleClick = () => {
+    console.log('Button in Card2 clicked!');
+    // do something when the button in Card2 is clicked
+  };
+
+  return (
+    <Card className='cardsStyle'>
+      <Card.Body>
+        <Card.Title>Set Temperature Color</Card.Title>
+        <br />
+        <ColorTempratureSlider />
+      </Card.Body>
+    </Card>
+  );
+};
+
+export default {
+  ColorPickerCard,
+  BulbBrightnessCard,
+  BulbTimerCard,
+  TemperatureColorCard,
+};
