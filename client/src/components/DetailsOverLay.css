@@ -1,0 +1,9 @@
+.my-overlay {
+    position: absolute;
+    background-color: rgb(253, 213, 137) ;
+    padding: 2px 10px;
+    color: rgb(0, 0, 0);
+    border-radius: 10px;
+    border: 1px solid black
+  }
+  

@@ -1,0 +1,246 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+  /* Set page width */
+	.container {
+	max-width: 800px;
+	margin: auto;
+  }
+  
+  /* Style the h1 tag */
+  h1 {
+	font-size: 50px;
+	text-align: center;
+	margin-top: 20px;
+	color: #004e53;
+	letter-spacing: 30px;
+  }
+  h3 {
+	font-size: 30px;
+	text-align: center;
+	margin-top: 5px;
+	color: #59ad98;
+	letter-spacing: 4px;
+  }
+  h4 {
+	font-size: 15px;
+	text-align: center;
+	margin-top: 5px;
+	color: #000000;
+	letter-spacing: 3px;
+  }
+  
+  /* Style the main container */
+  #bulbcontainer {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin-top: 30px;
+  }
+  
+  #bulbdetails{
+	padding-left: 20px;
+	font-size:20px;
+	letter-spacing: 2px;
+  }
+
+  /* Style the bordered divs */
+  .borderedDiv {
+	border: 2px solid #000000;
+	border-radius: 10px;
+	margin: 10px;
+	padding: 10px;
+	width: 300px;
+  }
+  
+  /* Style the bulb power switch */
+  .switch {
+	position: relative;
+	display: inline-block;
+	width: 60px;
+	height: 34px;
+  }
+  
+  .switch input {
+	opacity: 0;
+	width: 0;
+	height: 0;
+  }
+  
+  .toggleSlider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #ccc;
+	-webkit-transition: .4s;
+	transition: .4s;
+  }
+  
+  .toggleSlider:before {
+	position: absolute;
+	content: "";
+	height: 26px;
+	width: 26px;
+	left: 4px;
+	bottom: 4px;
+	background-color: white;
+	-webkit-transition: .4s;
+	transition: .4s;
+  }
+  
+  input:checked + .toggleSlider {
+	background-color: #2196F3;
+  }
+  
+  input:focus + .toggleSlider {
+	box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .toggleSlider:before {
+	-webkit-transform: translateX(26px);
+	-ms-transform: translateX(26px);
+	transform: translateX(26px);
+  }
+  
+  .toggleSlider.round {
+	border-radius: 34px;
+  }
+  
+  .toggleSlider.round:before {
+	border-radius: 50%;
+  }
+  
+  /* Style the color picker */
+  #colorpicker {
+	width: 50px;
+	height: 30px;
+	border-radius: 5px;
+  }
+  
+  /* Style the brightness slider */
+  #brightness {
+	width: 100%;
+	margin-top: 10px;
+  }
+  
+  /* Style the timer input */
+  #bulbtimer {
+	width: 40%;
+	height: 35px;
+	border-radius: 5px;
+  }
+
+  #selectmode{
+	margin-left:90px;
+	width:50px;
+	height:35px;
+	font-size:15px
+  }
+ 
+body {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	align-items: center;
+	min-height: 100vh;
+	background: #d3fcf9;
+  }
+  
+  button {
+	position: relative;
+	background: #9fe9d0;
+	color: #fff;
+	text-decoration: none;
+	border: none;
+	letter-spacing: 0.1rem;
+	font-size: 1rem;
+	padding: 1rem 3rem;
+	transition: 0.2s;
+	letter-spacing: 3px;
+  }
+  
+  button:hover {
+	letter-spacing: 0.2rem;
+	padding: 1.1rem 3.1rem;
+	background: var(--clr);
+	color: var(--clr);
+	/* box-shadow: 0 0 35px var(--clr); */
+	animation: box 3s infinite;
+  }
+  
+  button::before {
+	content: "";
+	position: absolute;
+	inset: 2px;
+	background: #272822;
+  }
+  
+  button span {
+	position: relative;
+	z-index: 1;
+  }
+  
+  button i::before {
+	content: "";
+	position: absolute;
+	width: 10px;
+	height: 2px;
+	left: 80%;
+	top: -2px;
+	border: 2px solid var(--clr);
+	background: #272822;
+	transition: 0.2s;
+  }
+  
+  button:hover i::before {
+	width: 15px;
+	left: 20%;
+	animation: move 3s infinite;
+  }
+  
+  button i::after {
+	content: "";
+	position: absolute;
+	width: 10px;
+	height: 2px;
+	left: 20%;
+	bottom: -2px;
+	border: 2px solid var(--clr);
+	background: #272822;
+	transition: 0.2s;
+  }
+  
+  button:hover i::after {
+	width: 15px;
+	left: 80%;
+	animation: move 3s infinite;
+  }
+
+  @keyframes move {
+	0% {
+	  transform: translateX(0);
+	}
+	50% {
+	  transform: translateX(5px);
+	}
+	100% {
+	  transform: translateX(0);
+	}
+  }
+  
+  @keyframes box {
+	0% {
+	  box-shadow: #27272c;
+	}
+	50% {
+	  box-shadow: 0 0 25px var(--clr);
+	}
+	100% {
+	  box-shadow: #27272c;
+	}
+  }

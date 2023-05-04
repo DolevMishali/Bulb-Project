@@ -1,4 +1,4 @@
-const apiUrl = 'http://localhost:5000';
+const apiUrl = 'http://localhost:5500';
 const apiBulbRoute = '/bulb';
 
 let timerId;
@@ -178,7 +178,9 @@ async function setHexColor(color) {
 
 async function setTimer() {
   var timer = document.getElementById("bulbtimer");
+  var mode = document.getElementById("selectmode")
   const clock = timer.value.split(":")
+  const mode_value = mode.value
   await fetch(`${apiUrl}${apiBulbRoute}/timer`, {
     method: 'POST',
     headers: {
@@ -187,8 +189,18 @@ async function setTimer() {
     body: JSON.stringify({
       hours: clock[0],
       minutes: clock[1],
-      seconds: clock[2]
+      seconds: clock[2],
+      mode:mode_value
     })
+  }); 
+}
+
+async function setWeatherMode() {
+  await fetch(`${apiUrl}${apiBulbRoute}/weather_color`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
   }); 
 }
 
