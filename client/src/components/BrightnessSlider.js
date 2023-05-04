@@ -11,3 +11,4 @@ function BrightnessSlider() {
 export default BrightnessSlider;
 
 //To add - if the bulb is not connected, need to add 'disabled' to the form.range!
+//To add - onChange
