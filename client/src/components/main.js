@@ -19,10 +19,11 @@ function Main() {
             Primary
           </Button>{' '}
           <SwitchOnOff />
-          <Col>
+          <Row>
             <ButtonCard.ColorPickerCard />
             <ButtonCard.BulbBrightnessCard />
-          </Col>
+            <ButtonCard.BulbTimerCard />
+          </Row>
         </Row>
       </Container>
       {/* <DetailsOverLay />
