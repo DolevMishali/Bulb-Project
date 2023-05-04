@@ -1,6 +1,6 @@
 import Figure from 'react-bootstrap/Figure';
 
-function FigureExample() {
+function FigureTemplate() {
   return (
     <Figure>
       <Figure.Image
@@ -16,4 +16,4 @@ function FigureExample() {
   );
 }
 
-export default FigureExample;
+export default FigureTemplate;
