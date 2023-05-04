@@ -4,10 +4,16 @@ import ButtonCard from './Cards';
 import { Row, Col, Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 
+
 function Main() {
   return (
     <>
       <Container>
+        <Row style={{ marginTop: '40px', marginBottom: '40px' }}>
+          <DetailsOverLay />
+          <SwitchOnOff />
+          <toggle />
+        </Row>
         <Row>
           <Button variant='primary' className='colsheader'>
             Weather Mode
@@ -18,16 +24,14 @@ function Main() {
           <Button variant='primary' className='colsheader'>
             Primary
           </Button>{' '}
-          <SwitchOnOff />
           <Row>
             <ButtonCard.ColorPickerCard />
             <ButtonCard.BulbBrightnessCard />
             <ButtonCard.BulbTimerCard />
+            <ButtonCard.TemperatureColorCard />
           </Row>
         </Row>
       </Container>
-      {/* <DetailsOverLay />
-       */}
     </>
   );
 }
