@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import RangeSlider from 'react-bootstrap-range-slider';
 import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
+import './ButtonsStyle.css';
 
 function Slider() {
   const [value, setValue] = useState(4100);
@@ -24,10 +25,11 @@ function Slider() {
       />
       <div>
         <input
+          className='buttonsStyle'
           type='number'
           value={value}
           onChange={handleChange}
-          style={{ width: '45%' }}
+          style={{ width: '45%', color: 'white' }}
         />
       </div>
     </div>
