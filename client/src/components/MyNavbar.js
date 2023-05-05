@@ -6,9 +6,16 @@ import './MyNavbar.css';
 function MyNavbar() {
   return (
     <Navbar bg='dark' variant='dark'>
-      <Container>
+      <Container style={{ width: 'auto' }}>
         <Navbar.Brand className='navbarStyle'>
-          <BiBulb style={{ marginRight: 50, color: '#FFC107' }} />
+          <BiBulb
+            style={{
+              marginRight: 50,
+              color: '#FEDC56',
+              fontSize: '25px',
+              marginBottom: '5px',
+            }}
+          />
           Yeelight Bulb Controller
         </Navbar.Brand>
       </Container>
