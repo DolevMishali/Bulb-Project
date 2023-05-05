@@ -2,7 +2,7 @@ import Switch from '@mui/material/Switch';
 import { styled } from '@mui/material/styles';
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
-  marginLeft: '76%',
+  marginLeft: '66%',
   width: 70,
   height: 34,
   padding: 7,
