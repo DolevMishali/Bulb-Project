@@ -1,19 +1,11 @@
+html,
 body {
-  background-color: #d4d4d4 !important;
+  height: 100%;
+}
+
+body {
+  background: linear-gradient(to bottom, #1b2735 0%, #090a0f 100%);
+  margin: 0;
+  padding: 0;
   letter-spacing: 0.2rem;
-}
-
-.colsheader {
-  width: 30% !important;
-  border: 1px solid black !important;
-  margin: 10px;
-  margin-bottom: 50px;
-  margin-top: 20px !important;
-}
-
-.rowlist {
-  border: 1px solid black;
-  border-radius: 3px;
-  margin-right: 80%;
-  text-align: center;
 }
