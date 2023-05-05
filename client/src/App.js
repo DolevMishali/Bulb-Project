@@ -7,10 +7,10 @@ import Main from './components/main';
 function App() {
   return (
     // Header, Data components, footer
-    <div className='App'>
+    <>
       <MyNavbar />
       <Main />
-    </div>
+    </>
   );
 }
 
