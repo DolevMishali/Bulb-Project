@@ -2,37 +2,81 @@ import DetailsOverLay from './DetailsOverLay';
 import SwitchOnOff from './SwitchButtonOnOff';
 import ButtonCard from './Cards';
 import { Row, Col, Container } from 'react-bootstrap';
-import Button from 'react-bootstrap/Button';
-
+import ReactButton from 'react-bootstrap/Button';
+import { useState } from 'react';
+import './ColsRows.css';
+import './ButtonsStyle.css';
 
 function Main() {
+  const [showContainer, setShowContainer] = useState(false);
+  const buttonValue = 'some value'; // change this to the actual value of the button
+
+  const handleClick = () => {
+    if (buttonValue) {
+      setShowContainer(true);
+    } else {
+      setShowContainer(false);
+    }
+  };
+
   return (
-    <>
-      <Container>
-        <Row style={{ marginTop: '40px', marginBottom: '40px' }}>
-          <DetailsOverLay />
-          <SwitchOnOff />
-          <toggle />
-        </Row>
-        <Row>
-          <Button variant='primary' className='colsheader'>
-            Weather Mode
-          </Button>{' '}
-          <Button variant='primary' className='colsheader'>
-            Bulb Timer
-          </Button>{' '}
-          <Button variant='primary' className='colsheader'>
-            Primary
-          </Button>{' '}
-          <Row>
-            <ButtonCard.ColorPickerCard />
-            <ButtonCard.BulbBrightnessCard />
-            <ButtonCard.BulbTimerCard />
-            <ButtonCard.TemperatureColorCard />
-          </Row>
-        </Row>
-      </Container>
-    </>
+    <div>
+      {showContainer ? (
+        <>
+          <Container>
+            <Row style={{ marginTop: '30px', marginBottom: '40px' }}>
+              <DetailsOverLay />
+              <SwitchOnOff />
+              <toggle />
+            </Row>
+            <Row>
+              <Row className='m-auto'>
+                <Col>
+                  <ButtonCard.ColorPickerCard />
+                </Col>
+                <Col>
+                  <ButtonCard.BulbBrightnessCard />
+                </Col>
+              </Row>
+              <Row className='m-auto'>
+                <Col>
+                  <ButtonCard.BulbTimerCard />
+                </Col>
+                <Col>
+                  <ButtonCard.TemperatureColorCard />
+                </Col>
+              </Row>
+              <Row className='m-auto'>
+                <Col>
+                  <ButtonCard.WeatherCard />
+                </Col>
+              </Row>
+            </Row>
+          </Container>
+          <ReactButton
+            className='buttonsStyle'
+            onClick={() => setShowContainer(false)}
+          >
+            Hide Container
+          </ReactButton>
+        </>
+      ) : (
+        <ReactButton
+          className='buttonsStyle'
+          onClick={handleClick}
+          style={{
+            marginLeft: '35%',
+            marginTop: '10%',
+            width: '390px',
+            height: '100px',
+            fontSize: '25px',
+            letterSpacing: '1rem',
+          }}
+        >
+          Discover Bulb
+        </ReactButton>
+      )}
+    </div>
   );
 }
 
