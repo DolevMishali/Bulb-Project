@@ -1,16 +1,24 @@
 from flask import Flask, request, jsonify
 from server.engine.bulbEngine import BulbEngine
+
 from flask_cors import CORS
+# from flask_socketio import SocketIO,emit
+
+
 import uuid
 import csv
 import os
 
 app = Flask(__name__)
+# CORS(app,resources={r"/*":{"origins":"*"}})
 CORS(app)
+
 db_path = os.path.join(app.root_path, 'bulb.csv')
 Bulb_engine = BulbEngine()
 os.environ['FLASK_APP'] = 'bulbAPI.py'
 bulb_route = '/bulb'
+
+# socketio = SocketIO(app,cors_allowed_origins="*")
 
 @app.route(bulb_route, methods=['GET'])
 def get_bulb():
