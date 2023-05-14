@@ -7,7 +7,7 @@ function MyNavbar() {
   return (
     <Navbar bg='dark' variant='dark'>
       <Container style={{ width: 'auto' }}>
-        <Navbar.Brand className='navbarStyle'>
+        <Navbar.Brand className='navbar-Wrapper'>
           <BiBulb
             style={{
               marginRight: 50,
