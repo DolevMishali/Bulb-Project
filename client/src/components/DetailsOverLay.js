@@ -1,5 +1,5 @@
 // Importing necessary modules
-import React, { useState, useRef } from 'react'; // Importing React library, useState and useRef hooks
+import { useState, useRef } from 'react'; // Importing React library, useState and useRef hooks
 import Button from 'react-bootstrap/Button'; // Importing Button component from react-bootstrap
 import Overlay from 'react-bootstrap/Overlay'; // Importing Overlay component from react-bootstrap
 import './DetailsOverLay.css'; // Importing custom CSS styles
