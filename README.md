@@ -1,6 +1,6 @@
-Project Title
+Yeelight Bulb Web Controller
 
-The project is a web application that utilizes Python for the API and engine, and JavaScript for the frontend. It allows users to perform a specific task (e.g. search for data, perform calculations, etc.) by interacting with the frontend, which sends requests to the API. The API processes the requests and returns a response, which is then displayed on the frontend.
+The project is a web application that utilizes Python for the API and engine, and React for the frontend. It allows users to perform a specific task (e.g. search for data, perform calculations, etc.) by interacting with the frontend, which sends requests to the API. The API processes the requests and returns a response, which is then displayed on the frontend.
 Table of Contents
 
     Installation
