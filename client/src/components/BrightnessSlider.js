@@ -1,12 +1,30 @@
 import Form from 'react-bootstrap/Form';
+import React, { useState } from 'react';
 
-function BrightnessSlider() {
+const BrightnessSlider = ({ onChange, value }) => {
+
+  const [brightness, setBrightness] = useState();
+
+  const changeHandler = (brightness) => {
+    setBrightness(brightness.target.valueAsNumber);
+    onChange(brightness.target.valueAsNumber);
+  };
+
+  const mouseUpHandler = () => {
+    onChange(brightness);
+  };
+
   return (
-    <>
-      <Form.Range defaultValue={0} />
-    </>
+    <Form.Range
+      defaultValue={0}
+      width='200px'
+      //value={value}
+      brightness={brightness}
+      onChange={changeHandler}
+      onMouseUp={mouseUpHandler}
+    />
   );
-}
+};
 
 export default BrightnessSlider;
 

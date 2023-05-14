@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import RangeSlider from 'react-bootstrap-range-slider';
 import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 import './ButtonsStyle.css';
@@ -25,11 +25,10 @@ function Slider() {
       />
       <div>
         <input
-          className='buttonsStyle'
-          type='number'
+          className='buttons-Wrapper'
           value={value}
           onChange={handleChange}
-          style={{ width: '45%', color: 'white' }}
+          style={{ textAlign: 'center', width: '45%', color: 'white' }}
         />
       </div>
     </div>
